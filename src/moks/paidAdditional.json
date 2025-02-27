@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Nutella",
+        "price": "R$2,00",
+        "id": "13"
+    },
+    {
+        "name": "Creme de Ninho",
+        "price": "R$2,00",
+        "id": "14"
+    },
+    {
+        "name": "Ovomaltine",
+        "price": "R$2,00",
+        "id": "15"
+    },
+    {
+        "name": "Oreo",
+        "price": "R$2,00",
+        "id": "16"
+    },
+    {
+        "name": "Kit Kat",
+        "price": "R$2,00",
+        "id": "17"
+    }
+]

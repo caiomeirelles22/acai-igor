@@ -1,0 +1,91 @@
+[
+    {
+        "size": {
+            "size": "700ml",
+            "price": 15,
+            "id": "4"
+        },
+        "toppings": [
+            {
+                "name": "Caramelo",
+                "id": "21"
+            },
+            {
+                "name": "Mel",
+                "id": "24"
+            }
+        ],
+        "freeAdditionals": [
+            {
+                "name": "Granulado de chocolate",
+                "id": "8"
+            },
+            {
+                "name": "Confete",
+                "id": "10"
+            }
+        ],
+        "fruit": {
+            "name": "Kiwi",
+            "id": "27"
+        },
+        "paidAdditionals": [
+            {
+                "name": "Oreo",
+                "price": "R$2,00",
+                "id": "16"
+            }
+        ]
+    },
+    {
+        "size": {
+            "size": "500ml",
+            "price": 14,
+            "id": "3"
+        },
+        "toppings": [
+            {
+                "name": "Morango",
+                "id": "18"
+            },
+            {
+                "name": "Doce de Leite",
+                "id": "22"
+            }
+        ],
+        "freeAdditionals": [
+            {
+                "name": "Jujuba",
+                "id": "3"
+            },
+            {
+                "name": "Amendoim",
+                "id": "7"
+            },
+            {
+                "name": "Confete",
+                "id": "10"
+            },
+            {
+                "name": "Granulado colorido",
+                "id": "9"
+            }
+        ],
+        "fruit": {
+            "name": "Morango",
+            "id": "5"
+        },
+        "paidAdditionals": [
+            {
+                "name": "Ovomaltine",
+                "price": "R$2,00",
+                "id": "15"
+            },
+            {
+                "name": "Creme de Ninho",
+                "price": "R$2,00",
+                "id": "14"
+            }
+        ]
+    }
+]

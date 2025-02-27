@@ -1,0 +1,11 @@
+{
+    "name": "Caio Meirelles",
+    "phoneNumber": "22998021430",
+    "cep": "28030350",
+    "address": {
+        "street": "Rua Raimundo de Farias Brito",
+        "neighborhood": "Loteamento Sonho Dourado",
+        "number": "577",
+        "complement": "Bloco 9, apto 307"
+    }
+}

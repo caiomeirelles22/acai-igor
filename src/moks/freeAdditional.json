@@ -1,0 +1,46 @@
+[
+    {
+        "name": "Leite em pó",
+        "id": "1"
+    },
+    {
+        "name": "Granola",
+        "id": "0"
+    },
+    {
+        "name": "Paçoca",
+        "id": "2"
+    },
+    {
+        "name": "Jujuba",
+        "id": "3"
+    },
+    {
+        "name": "Amendoim",
+        "id": "7"
+    },
+    {
+        "name": "Granulado de chocolate",
+        "id": "8"
+    },
+    {
+        "name": "Granulado colorido",
+        "id": "9"
+    },
+    {
+        "name": "Confete",
+        "id": "10"
+    },
+    {
+        "name": "Sucrilhos",
+        "id": "11"
+    },
+    {
+        "name": "Jujuba azedinha",
+        "id": "12"
+    },
+    {
+        "name": "Choco Boll",
+        "id": "13"
+    }
+]
