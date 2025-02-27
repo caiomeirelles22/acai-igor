@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import imageMok from '@/../../fotos-n-trabalhadas/Captura de tela 2025-02-22 122548.png'
+import imageMok from '@/../public/logoAcai.png'
 import acaiCartJson from '@/moks/acaiCart.json'
 
 type AcaiCartProps = typeof acaiCartJson
