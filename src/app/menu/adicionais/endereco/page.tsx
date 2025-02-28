@@ -23,7 +23,6 @@ export default function AddressForm() {
   })
 
   useEffect(() => {
-    // Ensure this runs only on the client side
     if (typeof window !== 'undefined') {
       const savedCart = sessionStorage.getItem('acaiCart')
       if (savedCart) {
@@ -51,7 +50,7 @@ export default function AddressForm() {
   }, [])
 
   const handleCepChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newCep = e.target.value.replace(/\D/g, '') // Remove caracteres não numéricos
+    const newCep = e.target.value.replace(/\D/g, '')
     setCep(newCep)
 
     if (newCep.length === 8) {
@@ -80,8 +79,11 @@ export default function AddressForm() {
     setAddress({ ...address, neighborhood: e.target.value })
   }
 
-  const handleSaveAddress = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault() // Previne o comportamento padrão do botão dentro do formulário
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    if (!event.currentTarget.checkValidity()) {
+      event.preventDefault()
+      return
+    }
 
     const userAddress = {
       name,
@@ -91,8 +93,6 @@ export default function AddressForm() {
     }
 
     localStorage.setItem('userAddress', JSON.stringify(userAddress))
-
-    router.push('/menu/adicionais/endereco/pagamento')
   }
 
   return (
@@ -117,28 +117,26 @@ export default function AddressForm() {
       <Form
         action="/menu/adicionais/endereco/pagamento"
         className="flex flex-col gap-2 p-3 flex-1 w-full bg-purple-50"
+        onSubmit={handleSubmit}
       >
         <input type="hidden" name="name" value={name} />
         <input type="hidden" name="phoneNumber" value={phoneNumber} />
 
-        {/* Inputs hidden para o endereço */}
         <input type="hidden" name="street" value={address.street} />
         <input type="hidden" name="neighborhood" value={address.neighborhood} />
         <input type="hidden" name="number" value={address.number} />
         <input type="hidden" name="complement" value={address.complement} />
 
-        <div>
-          <label className="block text-gray-700 font-semibold">Nome</label>
-          <input
-            required
-            minLength={3}
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 outline-none"
-            placeholder="Igor Donida"
-          />
-        </div>
+        <label className="block text-gray-700 font-semibold">Nome</label>
+        <input
+          required
+          minLength={3}
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 outline-none"
+          placeholder="Igor Donida"
+        />
 
         <label className="block text-gray-700 font-semibold">Celular</label>
         <input
@@ -152,76 +150,64 @@ export default function AddressForm() {
           maxLength={11}
         />
 
-        <div>
-          <label className="block text-gray-700 font-semibold">CEP</label>
-          <input
-            type="text"
-            required
-            minLength={8}
-            value={cep}
-            onChange={handleCepChange}
-            maxLength={8}
-            className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 outline-none"
-            placeholder="28030350"
-          />
-        </div>
+        <label className="block text-gray-700 font-semibold">CEP</label>
+        <input
+          type="text"
+          required
+          minLength={8}
+          value={cep}
+          onChange={handleCepChange}
+          maxLength={8}
+          className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 outline-none"
+          placeholder="28030350"
+        />
 
-        <div>
-          <label className="block text-gray-700 font-semibold">Rua</label>
-          <input
-            type="text"
-            required
-            minLength={4}
-            value={address.street}
-            onChange={handleStreetChange}
-            className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 outline-none"
-            placeholder="Rua das flores"
-          />
-        </div>
+        <label className="block text-gray-700 font-semibold">Rua</label>
+        <input
+          type="text"
+          required
+          minLength={4}
+          value={address.street}
+          onChange={handleStreetChange}
+          className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 outline-none"
+          placeholder="Rua das flores"
+        />
 
-        <div>
-          <label className="block text-gray-700 font-semibold">Bairro</label>
-          <input
-            type="text"
-            value={address.neighborhood}
-            required
-            minLength={4}
-            onChange={handleNeighborhoodChange}
-            className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 outline-none"
-            placeholder="Bairro"
-          />
-        </div>
+        <label className="block text-gray-700 font-semibold">Bairro</label>
+        <input
+          type="text"
+          value={address.neighborhood}
+          required
+          minLength={4}
+          onChange={handleNeighborhoodChange}
+          className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 outline-none"
+          placeholder="Bairro"
+        />
 
-        <div>
-          <label className="block text-gray-700 font-semibold">Número</label>
-          <input
-            type="text"
-            required
-            value={address.number}
-            onChange={(e) => setAddress({ ...address, number: e.target.value })}
-            className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
-            placeholder="Número da residência"
-          />
-        </div>
+        <label className="block text-gray-700 font-semibold">Número</label>
+        <input
+          type="text"
+          required
+          value={address.number}
+          onChange={(e) => setAddress({ ...address, number: e.target.value })}
+          className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
+          placeholder="Número da residência"
+        />
 
-        <div>
-          <label className="block text-gray-700 font-semibold">
-            Complemento
-          </label>
-          <input
-            type="text"
-            value={address.complement}
-            onChange={(e) =>
-              setAddress({ ...address, complement: e.target.value })
-            }
-            className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
-            placeholder="Apartamento, casa, bloco, etc."
-          />
-        </div>
+        <label className="block text-gray-700 font-semibold">Complemento</label>
+        <input
+          type="text"
+          value={address.complement}
+          onChange={(e) =>
+            setAddress({ ...address, complement: e.target.value })
+          }
+          className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
+          placeholder="Apartamento, casa, bloco, etc."
+        />
 
         <button
           className="w-full bg-green-500 text-purple-50 hover:bg-green-600 rounded-lg flex items-center py-3 px-2 justify-center gap-2 font-bold"
-          onClick={handleSaveAddress}
+          type="submit"
         >
           Avançar para pagamento
         </button>
