@@ -243,14 +243,10 @@ function AdicionaisFormContent() {
           ))}
         </div>
 
-        <Button type="button" onClick={handleAddToCart}>
+        <Button type="button" onClick={handleAddToCart} disabled={isLoading}>
           Adicionar ao carrinho
-        </button>
-        <button
-          type="submit"
-          onClick={handleAdvance}
-          className="w-full bg-green-500 text-purple-50 hover:bg-green-600 rounded-lg flex items-center py-3 px-2 justify-center gap-2"
-        >
+        </Button>
+        <Button type="submit" onClick={handleAdvance} disabled={isLoading}>
           Avançar para entrega
         </Button>
       </Form>
