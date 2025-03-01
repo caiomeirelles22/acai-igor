@@ -48,6 +48,8 @@ function AdicionaisFormContent() {
     string[]
   >([])
 
+  const [isLoading, setIsLoading] = useState(false)
+
   const maxToppings = businessRules.maxToppings
   const maxFreeAdditional = businessRules.maxFreeAdditional
 
@@ -88,6 +90,7 @@ function AdicionaisFormContent() {
   }
 
   const handleAddToCart = () => {
+    setIsLoading(true)
     const selectedSize = acaiSizes.find((s) => s.size === size)
     const acaiItem: CompletedAcai = {
       size: {
@@ -115,11 +118,13 @@ function AdicionaisFormContent() {
     storedAcaiList.push(acaiItem)
 
     sessionStorage.setItem('acaiCart', JSON.stringify(storedAcaiList))
+    setIsLoading(false)
 
     router.push('/menu/')
   }
 
   const handleAdvance = () => {
+    setIsLoading(true)
     const selectedSize = acaiSizes.find((s) => s.size === size)
     const acaiItem: CompletedAcai = {
       size: {
@@ -147,6 +152,7 @@ function AdicionaisFormContent() {
     storedAcaiList.push(acaiItem)
 
     sessionStorage.setItem('acaiCart', JSON.stringify(storedAcaiList))
+    setIsLoading(false)
   }
 
   return (
@@ -239,8 +245,12 @@ function AdicionaisFormContent() {
 
         <Button type="button" onClick={handleAddToCart}>
           Adicionar ao carrinho
-        </Button>
-        <Button type="submit" onClick={handleAdvance} variant="success">
+        </button>
+        <button
+          type="submit"
+          onClick={handleAdvance}
+          className="w-full bg-green-500 text-purple-50 hover:bg-green-600 rounded-lg flex items-center py-3 px-2 justify-center gap-2"
+        >
           Avançar para entrega
         </Button>
       </Form>
