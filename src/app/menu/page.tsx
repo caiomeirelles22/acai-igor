@@ -6,6 +6,7 @@ import Form from 'next/form'
 import * as RadioGroup from '@radix-ui/react-radio-group'
 import acaiSizes from '@/moks/acaiSizes.json'
 import { Cart } from '@/components/Cart'
+import { Button } from '@/components/Button'
 
 interface AcaiInfosProps {
   size: string
@@ -56,13 +57,9 @@ export default function Menu() {
 
           <input type="hidden" name="size" value={selectedSize || ''} />
 
-          <button
-            type="submit"
-            className="w-full bg-purple-500 text-white py-3 px-2 rounded-lg font-semibold hover:bg-purple-600 transition text-sm hover:cursor-pointer"
-            disabled={!selectedSize}
-          >
+          <Button type="submit" disabled={!selectedSize}>
             Avançar
-          </button>
+          </Button>
 
           <Cart />
         </Form>

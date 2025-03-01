@@ -14,6 +14,7 @@ import { CompletedAcai } from '@/types/acai'
 import acaiSizes from '@/moks/acaiSizes.json'
 import { BackButton } from '@/components/BackButton'
 import { CheckboxComponent } from '@/components/Checkbox'
+import { Button } from '@/components/Button'
 
 type businessRulesProps = typeof businessRulesJson
 const businessRules: businessRulesProps = businessRulesJson
@@ -236,20 +237,12 @@ function AdicionaisFormContent() {
           ))}
         </div>
 
-        <button
-          type="button"
-          className="w-full bg-purple-500 text-white py-3 px-2 rounded-lg font-semibold hover:bg-purple-600 transition text-sm"
-          onClick={handleAddToCart}
-        >
+        <Button type="button" onClick={handleAddToCart}>
           Adicionar ao carrinho
-        </button>
-        <button
-          type="submit"
-          onClick={handleAdvance}
-          className="w-full bg-green-500 text-purple-50 hover:bg-green-600 rounded-lg flex items-center py-3 px-2 justify-center gap-2"
-        >
+        </Button>
+        <Button type="submit" onClick={handleAdvance} variant="success">
           Avançar para entrega
-        </button>
+        </Button>
       </Form>
     </div>
   )
