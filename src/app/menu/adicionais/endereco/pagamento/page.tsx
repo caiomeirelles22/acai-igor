@@ -55,6 +55,16 @@ export default function PaymentForm() {
   const handleChangeForChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formattedValue = formatCurrency(e.target.value)
     setChangeFor(formattedValue)
+
+    // Verificar se o valor inserido para "Troco para" é maior que o total
+    const numericValue = parseFloat(e.target.value.replace(/\D/g, '')) / 100
+    if (numericValue < total) {
+      setError(
+        'O valor informado para o troco deve ser maior que o valor do produto.',
+      )
+    } else {
+      setError('')
+    }
   }
 
   return (
@@ -72,7 +82,6 @@ export default function PaymentForm() {
       <Form
         action="/menu/adicionais/endereco/pagamento/conferir"
         className="flex flex-col gap-2 p-3 flex-1 w-full"
-        //   onSubmit={handleSubmit}
       >
         <input type="hidden" name="paymentMethod" value={paymentMethod} />
         <input type="hidden" name="changeFor" value={changeFor} />
